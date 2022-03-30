@@ -67,7 +67,7 @@ h1 {
 }
 
 #form-comment {
-  padding-left: 20px;
+  padding-left: 35px;
   padding-bottom: 20px;
 }
 
@@ -75,21 +75,20 @@ h1 {
   width: 5%;
 }
 
-#heart {
+#heart-full {
   width: 5%;
 }
 
 .arrow {
   margin: 10px;
-  width: 8%;
-  height: 8%;
-  min-width: 50px;
+  width: 3%;
+  min-width: 35px;
 }
 
 .div-arrow {
   display: inline-flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
 }
 
