@@ -71,13 +71,39 @@ function createDatabase(artInfo) {
 }
 
 function buildArtwork(element) {
-  element.forEach(value => {
+  console.log(element.length)
+  const startIndex = 0
+  const endIndex = 1
+  let incrementIndex = 0
+  document.getElementById("Arrow-Right").addEventListener("click", () => {
+    if (incrementIndex < element.length) {
+      incrementIndex += 1
+      console.log("Arrow-Right", incrementIndex)
+      document.getElementById("image-list").replaceChildren()
+      loadArtworks(startIndex, endIndex, incrementIndex, element)
+    }
+  })
+  document.getElementById("Arrow-Left").addEventListener("click", () => {
+    if (incrementIndex > 0) {
+      incrementIndex -= 1
+      console.log("Arrow-Left", incrementIndex)
+      document.getElementById("image-list").replaceChildren()
+      loadArtworks(startIndex, endIndex, incrementIndex, element)
+    }
+  })
+  console.log('default', incrementIndex)
+  loadArtworks(startIndex, endIndex, incrementIndex, element)
+}
+
+function loadArtworks(startIndex, endIndex, incrementIndex, element) {
+  element.forEach((value, i) => {
+    if ((startIndex + incrementIndex <= i) && (endIndex + incrementIndex > i)) {
     if (value.image_id !== null) {
-    console.log(value)
-    const img = document.createElement("img")
-    img.id = value.id
-    img.src = `https://www.artic.edu/iiif/2/${value.image_id}/full/843,/0/default.jpg`
-    document.getElementById("image-list").append(img)
-    }// https://www.artic.edu/iiif/2/1adf2696-8489-499b-cad2-821d7fde4b33/full/843,/0/default.jpg
+      console.log(value)
+      const img = document.createElement("img")
+      img.id = value.id
+      img.src = `https://www.artic.edu/iiif/2/${value.image_id}/full/843,/0/default.jpg`
+      document.getElementById("image-list").append(img)
+    }}
   })
 }
