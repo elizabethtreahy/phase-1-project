@@ -98,12 +98,34 @@ function buildArtwork(element) {
 function loadArtworks(startIndex, endIndex, incrementIndex, element) {
   element.forEach((value, i) => {
     if ((startIndex + incrementIndex <= i) && (endIndex + incrementIndex > i)) {
-    if (value.image_id !== null) {
-      console.log(value)
-      const img = document.createElement("img")
-      img.id = value.id
-      img.src = `https://www.artic.edu/iiif/2/${value.image_id}/full/843,/0/default.jpg`
-      document.getElementById("image-list").append(img)
-    }}
-  })
-}
+      if (value.image_id !== null) {
+        console.log(value)
+        const img = document.createElement("img")
+        img.id = value.id
+        img.src = `https://www.artic.edu/iiif/2/${value.image_id}/full/843,/0/default.jpg`
+        document.getElementById("image-list").append(img)
+        let title = document.getElementById("Artwork")
+        title.textContent = value.title
+        let artistName = document.getElementById("Artist")
+        artistName.textContent = value.artist_title
+        const button = document.createElement("button")
+        let likeTruthy = true
+        button.innerText = ("LIKE")
+        button.addEventListener("click", () => {
+          if (likeTruthy === true) {
+            button.innerText = ("UNLIKE")
+            likeTruthy = !likeTruthy
+            return likeTruthy
+          }
+          else {
+            button.innerText = ("LIKE")
+            likeTruthy = !likeTruthy
+            return likeTruthy
+          }
+        })
+        document.getElementById("image-list").append(button)
+      }
+    }
+  }
+)}
+
