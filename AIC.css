@@ -3,48 +3,95 @@ body {
   border-color: #424242;
   border-width: 10px;
   font-family: "Nunito Sans" , sans-serif;
+  display: flex;
+  justify-content: center;
+
+}
+
+h1 {
+  font-size: 3em;
 }
 
 .row {
   display: flex;
+  justify-content: center;
+  min-width: 400px;
+  max-width: 1200px;
 }
 
 .column {
-  flex: 50%;
+  float: left;
+  min-width: 300px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.column-left {
+  flex: 30%;
+}
+
+.column-right {
+  flex: 70%;
+  min-width: 600px;
+  margin-left: 50px;
 }
 
 #Artist {
-  position: relative;
-  top: 30px;
-  left: 30px;
+  display: inline-flex;
+  justify-content: space-around;
+  flex-direction: row;
+  top: 20px;
+  left: 10px;
 }
 
 #Artwork {
-  position: relative;
+  display: inline-flex;
+  justify-content: space-around;
+  flex-direction: row;
+  min-width: 220px;
   top: 80px;
-  left: 40px;
+  left: 20px;
+  padding-top: 150px;
 }
 
 #description {
-  position: relative;
+  display: inline-flex;
+  justify-content: space-around;
+  flex-direction: row;
   top: 100px;
-  left: 40px;
+  left: 20px;
+  min-width: 280px;
+  padding-top: 60px;
 }
 
 .arrow {
-  position: center;
   margin: 10px;
-  float: right;
-  width: 4%;
-  height: 4%;
+  width: 8%;
+  height: 8%;
+  min-width: 50px;
+}
+
+.div-arrow {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
 }
 
 #image {
-  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  padding-top: 10px;
+
+  /* position: relative;
   max-width: 100%;
   height: auto;
   top: 10px;
   float: right;
   right: 10px;
   padding: 50px;
+  padding-top: 0px; */
 }
