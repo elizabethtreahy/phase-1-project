@@ -72,6 +72,12 @@ function createDatabase(artInfo) {
 
 function buildArtwork(element) {
   element.forEach(value => {
-    console.log(value.artist_title)
+    if (value.image_id !== null) {
+    console.log(value)
+    const img = document.createElement("img")
+    img.id = value.id
+    img.src = `https://www.artic.edu/iiif/2/${value.image_id}/full/843,/0/default.jpg`
+    document.getElementById("image-list").append(img)
+    }// https://www.artic.edu/iiif/2/1adf2696-8489-499b-cad2-821d7fde4b33/full/843,/0/default.jpg
   })
 }
