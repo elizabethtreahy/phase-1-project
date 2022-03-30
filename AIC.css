@@ -4,7 +4,33 @@ body {
   border-width: 10px;
   font-family: "Nunito Sans" , sans-serif;
 }
-svg {
+.arrow {
   width: 4%;
-  height: 4%;;
+  height: 4%;
+}
+
+#Artist {
+  position: relative;
+  top: 30px;
+  left: 30px;
+}
+
+#Artwork {
+  position: relative;
+  top: 80px;
+  left: 40px;
+}
+
+#description {
+  position: relative;
+  top: 100px;
+  left: 40px;
+}
+
+#image {
+  position: relative;
+  top: 50px;
+  float: right;
+  right: 50px;
+  padding: 50px;
 }
