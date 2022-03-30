@@ -3,18 +3,18 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 function checkDB() {
   fetch('http://localhost:3000/artworks')
-  .then(resp => resp.json())
-  .then(data => {
-    if (data.length === 0) {
-      fetchArt()
-    }
-    else if (data.length > 0) {
-      buildArtwork(data)
-    }
-  })
+    .then(resp => resp.json())
+    .then(data => {
+      if (data.length === 0) {
+        fetchArt()
+      }
+      else if (data.length > 0) {
+        buildArtwork(data)
+      }
+    })
 }
 function fetchArt() {
-  const requestSize = Array(1000).fill().map((x, i) => i)
+  const requestSize = Array(100).fill().map((x, i) => i)
   let automate = []
   const skipArray = []
   requestSize.forEach((overallIndex) => {
@@ -59,7 +59,6 @@ function fetchArt() {
 }
 
 function createDatabase(artInfo) {
-  console.log(artInfo)
   fetch('http://localhost:3000/artworks', {
     method: 'POST',
     headers: {
