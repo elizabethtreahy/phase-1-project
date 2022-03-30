@@ -75,26 +75,9 @@ function buildArtwork(element) {
   const startIndex = 0
   const endIndex = 1
   let incrementIndex = 0
-  document.getElementById("Arrow-Right").addEventListener("click", () => {
-    if (incrementIndex < element.length) {
-      incrementIndex += 1
-      console.log("Arrow-Right", incrementIndex)
-      document.getElementById("image-list").replaceChildren()
-      document.getElementById("comment-block").replaceChildren()
-      loadArtworks(startIndex, endIndex, incrementIndex, element)
-
-    }
-  })
-  document.getElementById("Arrow-Left").addEventListener("click", () => {
-    if (incrementIndex > 0) {
-      incrementIndex -= 1
-      console.log("Arrow-Left", incrementIndex)
-      document.getElementById("image-list").replaceChildren()
-      document.getElementById("comment-block").replaceChildren()
-      loadArtworks(startIndex, endIndex, incrementIndex, element)
-
-    }
-  })
+  
+  pageRight(startIndex, endIndex, incrementIndex, element)
+  pageLeft(startIndex, endIndex, incrementIndex, element)
   likes()
   submitComment()
   console.log('default', incrementIndex)
@@ -104,7 +87,7 @@ function buildArtwork(element) {
 function loadArtworks(startIndex, endIndex, incrementIndex, element) {
   element.forEach((value, i) => {
     if ((startIndex + incrementIndex <= i) && (endIndex + incrementIndex > i)) {
-      if (value.image_id !== null) {
+      // if (value.image_id !== null) {
         const img = document.createElement("img")
         img.id = value.id
         img.src = `https://www.artic.edu/iiif/2/${value.image_id}/full/843,/0/default.jpg`
@@ -113,10 +96,14 @@ function loadArtworks(startIndex, endIndex, incrementIndex, element) {
         title.textContent = value.title
         let artistName = document.getElementById("Artist")
         artistName.textContent = value.artist_title
+        console.log(element)
 
         // document.getElementById("image-list").append(likeButton)
 
-      }
+    //   }
+    //   else {
+    //     pageRight(startIndex, endIndex, incrementIndex, element)
+    //   }
     }
   }
   )
@@ -147,6 +134,32 @@ function likes() {
       likeButton.src = "../phase-1-project/images/Heart-outline.svg"
       likeTruthy = !likeTruthy
       return likeTruthy
+    }
+  })
+
+}
+function pageRight(startIndex, endIndex, incrementIndex, element) {
+  document.getElementById("Arrow-Right").addEventListener("click", () => {
+    if (incrementIndex < element.length) {
+      incrementIndex += 1
+      console.log("Arrow-Right", incrementIndex)
+      document.getElementById("image-list").replaceChildren()
+      document.getElementById("comment-block").replaceChildren()
+      loadArtworks(startIndex, endIndex, incrementIndex, element)
+
+    }
+  })
+
+}
+function pageLeft(startIndex, endIndex, incrementIndex, element) {
+  document.getElementById("Arrow-Left").addEventListener("click", () => {
+    if (incrementIndex > 0) {
+      incrementIndex -= 1
+      console.log("Arrow-Left", incrementIndex)
+      document.getElementById("image-list").replaceChildren()
+      document.getElementById("comment-block").replaceChildren()
+      loadArtworks(startIndex, endIndex, incrementIndex, element)
+
     }
   })
 
