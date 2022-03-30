@@ -95,6 +95,7 @@ function buildArtwork(element) {
 
     }
   })
+  likes()
   submitComment()
   console.log('default', incrementIndex)
   loadArtworks(startIndex, endIndex, incrementIndex, element)
@@ -112,25 +113,9 @@ function loadArtworks(startIndex, endIndex, incrementIndex, element) {
         title.textContent = value.title
         let artistName = document.getElementById("Artist")
         artistName.textContent = value.artist_title
-        const likeButton = document.getElementById("heart")
-        let likeTruthy = true
-        // likeButton.innerText = ("LIKE")
-        likeButton.addEventListener("click", () => {
-          if (likeTruthy === true) {
-            // likeButton.innerText = ("UNLIKE")
-            likeButton.src = "../phase-1-project/images/Heart.svg"
-            likeTruthy = !likeTruthy
-            return likeTruthy
-          }
-          else {
-            // likeButton.innerText = ("LIKE")
-            likeButton.src = "../phase-1-project/images/Heart-outline.svg"
-            likeTruthy = !likeTruthy
-            return likeTruthy
-          }
-        })
-        document.getElementById("image-list").append(likeButton)
-        
+
+        // document.getElementById("image-list").append(likeButton)
+
       }
     }
   }
@@ -145,4 +130,24 @@ function submitComment() {
     p.append(comment)
     document.getElementById("comment-block").append(p)
   })
+}
+function likes() {
+  const likeButton = document.getElementById("heart")
+  let likeTruthy = true
+  // likeButton.innerText = ("LIKE")
+  likeButton.addEventListener("click", () => {
+    if (likeTruthy === true) {
+      // likeButton.innerText = ("UNLIKE")
+      likeButton.src = "../phase-1-project/images/Heart.svg"
+      likeTruthy = !likeTruthy
+      return likeTruthy
+    }
+    else {
+      // likeButton.innerText = ("LIKE")
+      likeButton.src = "../phase-1-project/images/Heart-outline.svg"
+      likeTruthy = !likeTruthy
+      return likeTruthy
+    }
+  })
+
 }
