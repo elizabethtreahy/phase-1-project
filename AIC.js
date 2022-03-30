@@ -112,17 +112,19 @@ function loadArtworks(startIndex, endIndex, incrementIndex, element) {
         title.textContent = value.title
         let artistName = document.getElementById("Artist")
         artistName.textContent = value.artist_title
-        const likeButton = document.createElement("button")
+        const likeButton = document.getElementById("heart")
         let likeTruthy = true
-        likeButton.innerText = ("LIKE")
+        // likeButton.innerText = ("LIKE")
         likeButton.addEventListener("click", () => {
           if (likeTruthy === true) {
-            likeButton.innerText = ("UNLIKE")
+            // likeButton.innerText = ("UNLIKE")
+            likeButton.src = "../phase-1-project/images/Heart.svg"
             likeTruthy = !likeTruthy
             return likeTruthy
           }
           else {
-            likeButton.innerText = ("LIKE")
+            // likeButton.innerText = ("LIKE")
+            likeButton.src = "../phase-1-project/images/Heart-outline.svg"
             likeTruthy = !likeTruthy
             return likeTruthy
           }
