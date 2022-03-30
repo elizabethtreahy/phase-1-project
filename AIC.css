@@ -71,12 +71,9 @@ h1 {
   padding-bottom: 20px;
 }
 
-#heart-outline {
-  width: 5%;
-}
 
-#heart-full {
-  width: 5%;
+#heart {
+  width: 25%;
 }
 
 .arrow {
