@@ -42,6 +42,10 @@ function fetchArt() {
                   skipArray.push(pageNumber)
                   console.log(response.status, pageNumber)
                 }
+                else if (response.status === 500) {
+                  skipArray.push(pageNumber)
+                  console.log(response.status, pageNumber)
+                }
               })
           } catch {
             skipArray.push(pageNumber)
