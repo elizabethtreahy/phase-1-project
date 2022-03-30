@@ -1,6 +1,6 @@
 body {
-  background-color: #F0F0F0;
-  border-color: #424242;
+  background-color: #cecece;
+  border-color: #313131;
   border-width: 10px;
   font-family: "Nunito Sans" , sans-serif;
   display: flex;
@@ -63,6 +63,10 @@ h1 {
   left: 20px;
   min-width: 280px;
   padding-top: 60px;
+}
+
+#heart {
+  width: 15%;
 }
 
 .arrow {
