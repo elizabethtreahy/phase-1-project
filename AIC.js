@@ -80,7 +80,9 @@ function buildArtwork(element) {
       incrementIndex += 1
       console.log("Arrow-Right", incrementIndex)
       document.getElementById("image-list").replaceChildren()
+      document.getElementById("comment-block").replaceChildren()
       loadArtworks(startIndex, endIndex, incrementIndex, element)
+
     }
   })
   document.getElementById("Arrow-Left").addEventListener("click", () => {
@@ -88,9 +90,12 @@ function buildArtwork(element) {
       incrementIndex -= 1
       console.log("Arrow-Left", incrementIndex)
       document.getElementById("image-list").replaceChildren()
+      document.getElementById("comment-block").replaceChildren()
       loadArtworks(startIndex, endIndex, incrementIndex, element)
+
     }
   })
+  submitComment()
   console.log('default', incrementIndex)
   loadArtworks(startIndex, endIndex, incrementIndex, element)
 }
@@ -99,7 +104,6 @@ function loadArtworks(startIndex, endIndex, incrementIndex, element) {
   element.forEach((value, i) => {
     if ((startIndex + incrementIndex <= i) && (endIndex + incrementIndex > i)) {
       if (value.image_id !== null) {
-        console.log(value)
         const img = document.createElement("img")
         img.id = value.id
         img.src = `https://www.artic.edu/iiif/2/${value.image_id}/full/843,/0/default.jpg`
@@ -108,24 +112,35 @@ function loadArtworks(startIndex, endIndex, incrementIndex, element) {
         title.textContent = value.title
         let artistName = document.getElementById("Artist")
         artistName.textContent = value.artist_title
-        const button = document.createElement("button")
+        const likeButton = document.createElement("button")
         let likeTruthy = true
-        button.innerText = ("LIKE")
-        button.addEventListener("click", () => {
+        likeButton.innerText = ("LIKE")
+        likeButton.addEventListener("click", () => {
           if (likeTruthy === true) {
-            button.innerText = ("UNLIKE")
+            likeButton.innerText = ("UNLIKE")
             likeTruthy = !likeTruthy
             return likeTruthy
           }
           else {
-            button.innerText = ("LIKE")
+            likeButton.innerText = ("LIKE")
             likeTruthy = !likeTruthy
             return likeTruthy
           }
         })
-        document.getElementById("image-list").append(button)
+        document.getElementById("image-list").append(likeButton)
+        
       }
     }
   }
-)}
-
+  )
+}
+function submitComment() {
+  const submitButton = document.getElementById("submit")
+  console.log('hey')
+  submitButton.addEventListener("click", () => {
+    const comment = document.getElementById("comment-area").value
+    const p = document.createElement("p")
+    p.append(comment)
+    document.getElementById("comment-block").append(p)
+  })
+}
