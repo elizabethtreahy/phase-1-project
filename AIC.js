@@ -77,13 +77,13 @@ function loadArtworks(startIndex, endIndex, incrementIndex, element) {
   pageLeft(startIndex, endIndex, incrementIndex, element)
   element.forEach((value, i) => {
     if ((startIndex + incrementIndex <= i) && (endIndex + incrementIndex > i)) {
-      const img = document.createElement("img")
-      img.id = value.id
+      const img = document.getElementById('image')
+      // img.id = value.id
       if (value.image_id !== null) {
         img.src = `https://www.artic.edu/iiif/2/${value.image_id}/full/843,/0/default.jpg`
       }
       else {
-        img.src = "/images/placeholder.jpg"
+        img.src = "images/placeholder.jpg"
         const li = document.createElement("li")
         li.innerText = "Artwork is temporarily unavailable."
         document.getElementById("image-list").append(li)
@@ -111,12 +111,12 @@ function submitLike() {
   let likeTruthy = true
   likeButton.addEventListener("click", () => {
     if (likeTruthy === true) {
-      likeButton.src = "/images/Heart.svg"
+      likeButton.src = "images/Heart-full.png"
       likeTruthy = !likeTruthy
       return likeTruthy
     }
     else {
-      likeButton.src = "/images/Heart-outline.svg"
+      likeButton.src = "images/Heart-outline.png"
       likeTruthy = !likeTruthy
       return likeTruthy
     }
@@ -128,9 +128,9 @@ function pageRight(startIndex, endIndex, incrementIndex, element) {
       if (incrementIndex >= element.length) {
         incrementIndex = startIndex
       }
-      document.getElementById("image-list").replaceChildren()
+      // document.getElementById("image-list").replaceChildren()
       document.getElementById("comment-block").replaceChildren()
-      document.getElementById("heart").src = "/images/Heart-outline.svg"
+      document.getElementById("heart").src = "images/Heart-outline.png"
       document.getElementById("comment-area").value = ""
       loadArtworks(startIndex, endIndex, incrementIndex, element)
   })
@@ -142,9 +142,9 @@ function pageLeft(startIndex, endIndex, incrementIndex, element) {
       if (incrementIndex < 0) {
         incrementIndex = element.length - 1
       }
-      document.getElementById("image-list").replaceChildren()
+      // document.getElementById("image-list").replaceChildren()
       document.getElementById("comment-block").replaceChildren()
-      document.getElementById("heart").src = "/images/Heart-outline.svg"
+      document.getElementById("heart").src = "images/Heart-outline.png"
       document.getElementById("comment-area").value = ""
       loadArtworks(startIndex, endIndex, incrementIndex, element)
   })
