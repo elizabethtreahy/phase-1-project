@@ -14,10 +14,10 @@ function checkDB() {
     })
 }
 function fetchArt() {
-  const requestSize = Array(100).fill().map((x, i) => i)
-  let automate = []
-  const skipArray = []
-  requestSize.forEach((overallIndex) => {
+  const requestSize = Array(100).fill().map((x, i) => i)                                 //when initially requesting data, a certain percentage would inexplicably fail. to combat this, i've added statements to look at the initial fetch request
+  let automate = []                                                                      //and store the index of the item as it fails. also, requests greater than 10 at a time would fail, so i have told the engine to request
+  const skipArray = []                                                                   //ten at a time, with a timeout of 1 second. if a request succeeds, it is added to our local database. on start up, the engine checks to see if
+  requestSize.forEach((overallIndex) => {                                                //we have data in the database. if we do, it skips the inital fetch, and fetches from our local database.
     automate.push(overallIndex)
     if (automate.length === 10) {
       automate.forEach((item) => {
@@ -53,7 +53,7 @@ function fetchArt() {
     }
   })
 }
-function createDatabase(artInfo) {
+function createDatabase(artInfo) {                                 //function to store successful data in our local database
   fetch('http://localhost:3000/artworks', {
     method: 'POST',
     headers: {
@@ -64,21 +64,20 @@ function createDatabase(artInfo) {
     .then(response => response.json())
     .then(data => console.log(data))
 }
-function buildArtwork(element) {
+function buildArtwork(element) {                           //function to load one artwork at a time              
   const startIndex = 0
   const endIndex = 1
   let incrementIndex = 0
   loadArtworks(startIndex, endIndex, incrementIndex, element)
   submitComment()
 }
-function loadArtworks(startIndex, endIndex, incrementIndex, element) {
+function loadArtworks(startIndex, endIndex, incrementIndex, element) {      //function to load each page w/ art and artist name and artwork name
   submitLike()
   pageRight(startIndex, endIndex, incrementIndex, element)
   pageLeft(startIndex, endIndex, incrementIndex, element)
   element.forEach((value, i) => {
     if ((startIndex + incrementIndex <= i) && (endIndex + incrementIndex > i)) {
       const img = document.getElementById('image')
-      // img.id = value.id
       if (value.image_id !== null) {
         img.src = `https://www.artic.edu/iiif/2/${value.image_id}/full/843,/0/default.jpg`
       }
@@ -97,7 +96,7 @@ function loadArtworks(startIndex, endIndex, incrementIndex, element) {
   }
   )
 }
-function submitComment() {
+function submitComment() {                                         //funciton to submit a comment
   const submitButton = document.getElementById("submit")
   submitButton.addEventListener("click", () => {
     const comment = document.getElementById("comment-area").value
@@ -106,7 +105,7 @@ function submitComment() {
     document.getElementById("comment-block").append(p)
   })
 }
-function submitLike() {
+function submitLike() {                                  //function to like an image
   const likeButton = document.getElementById("heart")
   let likeTruthy = true
   likeButton.addEventListener("click", () => {
@@ -122,31 +121,31 @@ function submitLike() {
     }
   })
 }
-function pageRight(startIndex, endIndex, incrementIndex, element) {
+function pageRight(startIndex, endIndex, incrementIndex, element) {                 //function for moving right w/ arrow button
   document.getElementById("Arrow-Right").addEventListener("click", () => {
-      incrementIndex += 1
-      if (incrementIndex >= element.length) {
-        incrementIndex = startIndex
-      }
-      // document.getElementById("image-list").replaceChildren()
-      document.getElementById("comment-block").replaceChildren()
-      document.getElementById("heart").src = "images/Heart-outline.png"
-      document.getElementById("comment-area").value = ""
-      loadArtworks(startIndex, endIndex, incrementIndex, element)
+    incrementIndex += 1
+    if (incrementIndex >= element.length) {
+      incrementIndex = startIndex
+    }
+    clearFields()
+    loadArtworks(startIndex, endIndex, incrementIndex, element)
   })
   return incrementIndex
 }
-function pageLeft(startIndex, endIndex, incrementIndex, element) {
+function pageLeft(startIndex, endIndex, incrementIndex, element) {                //function for moving left w/ arrow button
   document.getElementById("Arrow-Left").addEventListener("click", () => {
-      incrementIndex -= 1
-      if (incrementIndex < 0) {
-        incrementIndex = element.length - 1
-      }
-      // document.getElementById("image-list").replaceChildren()
-      document.getElementById("comment-block").replaceChildren()
-      document.getElementById("heart").src = "images/Heart-outline.png"
-      document.getElementById("comment-area").value = ""
-      loadArtworks(startIndex, endIndex, incrementIndex, element)
+    incrementIndex -= 1
+    if (incrementIndex < 0) {
+      incrementIndex = element.length - 1
+    }
+    clearFields()
+    loadArtworks(startIndex, endIndex, incrementIndex, element)
   })
   return incrementIndex
+}
+function clearFields() {
+  document.getElementById("comment-block").replaceChildren()                   //function to clear prev info for new page refresh
+  document.getElementById("heart").src = "images/Heart-outline.png"
+  document.getElementById("comment-area").value = ""
+
 }
