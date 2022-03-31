@@ -76,7 +76,6 @@ function loadArtworks(startIndex, endIndex, incrementIndex, element) {
   pageRight(startIndex, endIndex, incrementIndex, element)
   pageLeft(startIndex, endIndex, incrementIndex, element)
   element.forEach((value, i) => {
-    console.log("load artworks", startIndex, endIndex, incrementIndex)
     if ((startIndex + incrementIndex <= i) && (endIndex + incrementIndex > i)) {
       const img = document.createElement("img")
       img.id = value.id
@@ -139,7 +138,6 @@ function pageRight(startIndex, endIndex, incrementIndex, element) {
 }
 function pageLeft(startIndex, endIndex, incrementIndex, element) {
   document.getElementById("Arrow-Left").addEventListener("click", () => {
-    console.log("page left", startIndex, endIndex, incrementIndex)
     if ((endIndex + incrementIndex) > 0) {
       incrementIndex -= 1
       document.getElementById("image-list").replaceChildren()
