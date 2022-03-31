@@ -126,7 +126,6 @@ function pageRight(startIndex, endIndex, incrementIndex, element) {
   document.getElementById("Arrow-Right").addEventListener("click", () => {
     if (incrementIndex < element.length) {
       incrementIndex += 1
-      console.log("Arrow-Right", incrementIndex)
       document.getElementById("image-list").replaceChildren()
       document.getElementById("comment-block").replaceChildren()
       document.getElementById("heart").src = "../phase-1-project/images/Heart-outline.svg"
@@ -138,7 +137,7 @@ function pageRight(startIndex, endIndex, incrementIndex, element) {
 }
 function pageLeft(startIndex, endIndex, incrementIndex, element) {
   document.getElementById("Arrow-Left").addEventListener("click", () => {
-    if ((endIndex + incrementIndex) > 0) {
+    if ((endIndex + incrementIndex) > 1) {
       incrementIndex -= 1
       document.getElementById("image-list").replaceChildren()
       document.getElementById("comment-block").replaceChildren()
