@@ -53,7 +53,6 @@ function fetchArt() {
     }
   })
 }
-
 function createDatabase(artInfo) {
   fetch('http://localhost:3000/artworks', {
     method: 'POST',
@@ -65,20 +64,19 @@ function createDatabase(artInfo) {
     .then(response => response.json())
     .then(data => console.log(data))
 }
-
 function buildArtwork(element) {
   const startIndex = 0
   const endIndex = 1
   let incrementIndex = 0
+  loadArtworks(startIndex, endIndex, incrementIndex, element)
+  submitComment()
+}
+function loadArtworks(startIndex, endIndex, incrementIndex, element) {
+  submitLike()
   pageRight(startIndex, endIndex, incrementIndex, element)
   pageLeft(startIndex, endIndex, incrementIndex, element)
-  submitLike()
-  submitComment()
-  loadArtworks(startIndex, endIndex, incrementIndex, element)
-}
-
-function loadArtworks(startIndex, endIndex, incrementIndex, element) {
   element.forEach((value, i) => {
+    console.log("load artworks", startIndex, endIndex, incrementIndex)
     if ((startIndex + incrementIndex <= i) && (endIndex + incrementIndex > i)) {
       const img = document.createElement("img")
       img.id = value.id
@@ -132,17 +130,24 @@ function pageRight(startIndex, endIndex, incrementIndex, element) {
       console.log("Arrow-Right", incrementIndex)
       document.getElementById("image-list").replaceChildren()
       document.getElementById("comment-block").replaceChildren()
+      document.getElementById("heart").src = "../phase-1-project/images/Heart-outline.svg"
+      document.getElementById("comment-area").value = ""
       loadArtworks(startIndex, endIndex, incrementIndex, element)
     }
   })
+  return incrementIndex
 }
 function pageLeft(startIndex, endIndex, incrementIndex, element) {
   document.getElementById("Arrow-Left").addEventListener("click", () => {
-    if (incrementIndex > 0) {
+    console.log("page left", startIndex, endIndex, incrementIndex)
+    if ((endIndex + incrementIndex) > 0) {
       incrementIndex -= 1
       document.getElementById("image-list").replaceChildren()
       document.getElementById("comment-block").replaceChildren()
+      document.getElementById("heart").src = "../phase-1-project/images/Heart-outline.svg"
+      document.getElementById("comment-area").value = ""
       loadArtworks(startIndex, endIndex, incrementIndex, element)
     }
   })
+  return incrementIndex
 }
