@@ -83,9 +83,6 @@ function loadArtworks(startIndex, endIndex, incrementIndex, element) {      //fu
       }
       else {
         img.src = "images/placeholder.jpg"
-        const li = document.createElement("li")
-        li.innerText = "Artwork is temporarily unavailable."
-        document.getElementById("image-list").append(li)
       }
       document.getElementById("image-list").append(img)
       let title = document.getElementById("Artwork")
