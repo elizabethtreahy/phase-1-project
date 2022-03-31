@@ -124,27 +124,29 @@ function submitLike() {
 }
 function pageRight(startIndex, endIndex, incrementIndex, element) {
   document.getElementById("Arrow-Right").addEventListener("click", () => {
-    if (incrementIndex < element.length) {
       incrementIndex += 1
+      if (incrementIndex >= element.length) {
+        incrementIndex = startIndex
+      }
       document.getElementById("image-list").replaceChildren()
       document.getElementById("comment-block").replaceChildren()
       document.getElementById("heart").src = "../phase-1-project/images/Heart-outline.svg"
       document.getElementById("comment-area").value = ""
       loadArtworks(startIndex, endIndex, incrementIndex, element)
-    }
   })
   return incrementIndex
 }
 function pageLeft(startIndex, endIndex, incrementIndex, element) {
   document.getElementById("Arrow-Left").addEventListener("click", () => {
-    if ((endIndex + incrementIndex) > 1) {
       incrementIndex -= 1
+      if (incrementIndex < 0) {
+        incrementIndex = element.length - 1
+      }
       document.getElementById("image-list").replaceChildren()
       document.getElementById("comment-block").replaceChildren()
       document.getElementById("heart").src = "../phase-1-project/images/Heart-outline.svg"
       document.getElementById("comment-area").value = ""
       loadArtworks(startIndex, endIndex, incrementIndex, element)
-    }
   })
   return incrementIndex
 }
