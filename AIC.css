@@ -14,31 +14,64 @@ h1 {
 .row {
   display: flex;
   justify-content: center;
-  min-width: 400px;
+  /* min-width: 600px; */
   max-width: 1200px;
+  object-fit: contain;
 }
 
 .column {
-  float: left;
-  min-width: 300px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  padding: 20px;
+  /* float: left; */
+  /* min-width: 300px; */
+  align-items: center;
+  /* flex-wrap: wrap; */
+  /* padding: 20px; */
+  object-fit: contain;
 }
 
 .column-left {
+  /* display: inline-block; */
   flex: 30%;
+  margin-right: 20px;
 }
 
 .column-right {
   flex: 70%;
-  min-width: 600px;
-  margin-left: 50px;
+  /* min-width: 600px; */
+  /* margin: 50px; */
+  /* object-fit: contain; */
+}
+
+@media only screen and (max-width: 800px) {
+  .row {
+    display: block;
+    /* justify-content: center; */
+  }
+  .column-left {
+    width: 100%;
+  }
+  .column-right {
+    width: 100%;
+  }
+  #Artist {
+    position: relative;
+  }
+  #Artwork {
+    position: relative;
+  }
+  #description {
+    position: relative;;
+  }
+  #div-arrow {
+    position: relative;;
+  }
+  #form-comment {
+    position: relative;
+  }
 }
 
 #Artist {
   display: inline-flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   flex-direction: row;
   top: 20px;
   left: 10px;
@@ -49,9 +82,9 @@ h1 {
   justify-content: space-around;
   flex-direction: row;
   min-width: 220px;
-  top: 70px;
-  padding-left: 20px;
-  padding-top: 150px;
+  /* padding-left: 20px; */
+  padding-top: 30px;
+  left: 10px;
 }
 
 #description {
@@ -67,16 +100,25 @@ h1 {
 }
 
 #form-comment {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  padding-left: 35px;
-  padding-bottom: 20px;
+  justify-content: center;
+
+}
+
+#comment-area {
+  position: center
+}
+
+#submit {
+  position: center;
 }
 
 
 #heart {
-  width: 25%;
+  max-width: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .arrow {
@@ -88,15 +130,21 @@ h1 {
 .div-arrow {
   display: inline-flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 100%;
   padding-bottom: 35px;
 }
 
 #image {
-  display: inline-flex;
+  display: flex;
+  /* position: absolute; */
   flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  padding-top: 10px;
+  justify-content: right;
+  max-width: 100%;
+  max-height: 800px;
+  border: #313131;
+  border-style: solid;
+  border-radius: 1px;
+  border-width: thin;
+  margin-top: 30px;
 }
